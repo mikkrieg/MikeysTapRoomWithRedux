@@ -33,6 +33,7 @@ This is a React program that mimics a tap room. Users are presented with a menu 
 
 * _No styling or formatting_
 * _Keg volume and purchase volume is assumed and hard coded. Keg volume: 124 pints, purchase volume: 1 pint_
+* _Edit button and Delete button in details have no functionality yet_
 
 ## License
 
