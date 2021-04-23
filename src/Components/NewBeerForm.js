@@ -1,9 +1,32 @@
 import React from 'react';
+import ReusableForm from './ReusableForm';
+import { v4 } from 'uuid';
+import PropTypes from 'prop-types';
 
-function NewBeerForm() {
+function NewBeerForm(props) {
   return(
-    <h1></h1>
+    <ReusableForm 
+    handleFormSubmission={handleNewBeerSubmission}
+    buttonText="Cheers!"/>
   );
+  function handleNewBeerSubmission(e) {
+    e.preventDefault();
+    props.handleBeerCreation
+    ({
+      name: e.target.name.value, 
+      brand: e.target.brand.value, 
+      price: parseInt(e.target.name.value), 
+      quantity: parseInt(e.target.quantity.value), 
+      alcohol: parseInt(e.target.alcohol.value),
+      fullStock: parseInt(e.target.fullStock.value),
+      country: e.target.country.value,
+      id: v4()
+    });
+  }
+}
+
+NewBeerForm.propTypes = {
+  handleBeerCreation: PropTypes.func
 }
 
 export default NewBeerForm;

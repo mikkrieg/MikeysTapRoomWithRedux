@@ -18,12 +18,16 @@ class TapControl extends React.Component {
     }));
   }
 
+  handleAddingNewBeer = () => {
+
+  }
+
 
   render() {
     let currentVisibleState = null;
     let buttonText = null;
     if(this.state.formVisible) {
-      currentVisibleState = <NewBeerForm />;
+      currentVisibleState = <NewBeerForm handleBeerCreation={this.handleAddingNewBeer}/>;
       buttonText = "Return to list";
     } else {
       console.log(typeof(MasterMenu))
