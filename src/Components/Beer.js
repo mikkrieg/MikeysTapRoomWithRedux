@@ -6,7 +6,7 @@ function Beer(props) {
   return(
     <div>
       <h3>{props.name} - QTY: {props.quantity}</h3>
-      <h4>Price: {props.price}</h4>
+      <h4>Price: ${props.price}</h4>
       <button>Buy</button>
       <button>Restock</button>
       <hr/>

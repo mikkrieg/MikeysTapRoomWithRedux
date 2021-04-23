@@ -18,8 +18,12 @@ class TapControl extends React.Component {
     }));
   }
 
-  handleAddingNewBeer = () => {
-
+  handleAddingNewBeerToMenu = (newBeer) => {
+    const newMasterMenu = this.state.MasterMenu.concat(newBeer);
+    this.setState({
+      MasterMenu: newMasterMenu,
+      formVisible: false
+    });
   }
 
 
@@ -27,7 +31,7 @@ class TapControl extends React.Component {
     let currentVisibleState = null;
     let buttonText = null;
     if(this.state.formVisible) {
-      currentVisibleState = <NewBeerForm handleBeerCreation={this.handleAddingNewBeer}/>;
+      currentVisibleState = <NewBeerForm handleBeerCreation={this.handleAddingNewBeerToMenu}/>;
       buttonText = "Return to list";
     } else {
       console.log(typeof(MasterMenu))
