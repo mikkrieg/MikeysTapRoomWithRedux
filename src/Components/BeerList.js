@@ -20,6 +20,7 @@ function BeerList(props) {
         country={beer.country} 
         key={beer.id}
         id={beer.id}
+        selectedBeer={props.selectedBeer}
         />
         )}
     </>
@@ -29,7 +30,8 @@ function BeerList(props) {
 export default BeerList;
 
 BeerList.propTypes = {
-  beerList: PropTypes.array
+  beerList: PropTypes.array,
+  selectedBeer: PropTypes.func
 }
 export const MasterMenu = [
   {

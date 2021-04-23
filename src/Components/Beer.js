@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function Beer(props) {
   return(
-    <div>
+    <div onClick={() => props.selectedBeer(props.id)}>
       <h3>{props.name} - QTY: {props.quantity}</h3>
       <h4>Price: ${props.price}</h4>
       <button>Buy</button>

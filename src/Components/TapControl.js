@@ -2,20 +2,29 @@ import React from 'react';
 import NewBeerForm from './NewBeerForm';
 import BeerList from './BeerList';
 import {MasterMenu} from './BeerList';
+import BeerDetail from './BeerDetail';
 
 class TapControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       formVisible: false,
-      MasterMenu: MasterMenu
+      MasterMenu: MasterMenu,
+      selectedBeer: null
     };
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisible: !prevState.formVisible
-    }));
+    if(this.state.selectedBeer != null){
+      this.setState({
+        formVisible: false,
+        selectedBeer: null
+      })
+    } else {
+      this.setState(prevState => ({
+        formVisible: !prevState.formVisible
+      }));
+    } 
   }
 
   handleAddingNewBeerToMenu = (newBeer) => {
@@ -26,6 +35,13 @@ class TapControl extends React.Component {
     });
   }
 
+  handleChangingSelectedBeer = (id) => {
+    const selectedBeer = this.state.MasterMenu.filter(beer => beer.id === id)[0];
+    this.setState({
+      selectedBeer: selectedBeer
+    });
+  } 
+
 
   render() {
     let currentVisibleState = null;
@@ -33,9 +49,14 @@ class TapControl extends React.Component {
     if(this.state.formVisible) {
       currentVisibleState = <NewBeerForm handleBeerCreation={this.handleAddingNewBeerToMenu}/>;
       buttonText = "Return to list";
+    } else if(this.state.selectedBeer != null){
+      currentVisibleState = <BeerDetail beer={this.state.selectedBeer}/>;
+      buttonText = "Return to list";
     } else {
       console.log(typeof(MasterMenu))
-      currentVisibleState = <BeerList beerList={this.state.MasterMenu}/>;
+      currentVisibleState = <BeerList 
+        beerList={this.state.MasterMenu}
+        selectedBeer={this.handleChangingSelectedBeer}/>;
       buttonText = "Add Beer";
     }
     return(
