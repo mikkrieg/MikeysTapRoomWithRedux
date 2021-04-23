@@ -17,7 +17,8 @@ function ReusableForm(props) {
         type="number"
         name="price"
         placeholder="Price"
-        min="1"/>
+        min="1"
+        step="0.01"/>
         <input
         type="number"
         name="quantity"
@@ -25,7 +26,8 @@ function ReusableForm(props) {
         <input
         type="number"
         name="alcohol"
-        placeholder="Alcohol Content"/>
+        placeholder="Alcohol Content"
+        step="0.1"/>
         <input
         type="number"
         name="fullStock"
