@@ -10,7 +10,8 @@ class TapControl extends React.Component {
     this.state = {
       formVisible: false,
       masterMenu: MasterMenu,
-      selectedBeer: null
+      selectedBeer: null,
+      quantity: null
     };
   }
 
@@ -33,11 +34,17 @@ class TapControl extends React.Component {
     if(selectedBeer.quantity >= 1) {
       selectedBeer.quantity--;
     }
+    this.setState({
+      quantity: selectedBeer.quantity
+    })
   }
 
   handleRestockButton = (id) => {
     const beer = this.state.masterMenu.filter(beer => beer.id === id)[0];
     beer.quantity = beer.fullKeg;
+    this.setState({
+      quantity: beer.quantity
+    })
   }
 
   handleAddingNewBeerToMenu = (newBeer) => {
