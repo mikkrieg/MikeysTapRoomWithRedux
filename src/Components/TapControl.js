@@ -53,7 +53,6 @@ class TapControl extends React.Component {
       currentVisibleState = <BeerDetail beer={this.state.selectedBeer}/>;
       buttonText = "Return to list";
     } else {
-      console.log(typeof(MasterMenu))
       currentVisibleState = <BeerList 
         beerList={this.state.MasterMenu}
         selectedBeer={this.handleChangingSelectedBeer}/>;
