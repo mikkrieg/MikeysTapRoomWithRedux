@@ -6,7 +6,7 @@ function Beer(props) {
   let quantity = props.quantity > 0 ? props.quantity : "Empty";
   return(
     <>
-      <div className="selected-beer" onClick={() => props.selectedBeer(props.id)}>
+      <div onClick={() => props.selectedBeer(props.id)}>
         <h3>{props.name} - QTY: {quantity} {quantity > 0 ? "pints" : "" }</h3>
         <h4>Price: ${props.price} per pint</h4>
       </div>
