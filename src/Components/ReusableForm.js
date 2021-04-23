@@ -21,19 +21,9 @@ function ReusableForm(props) {
         step="0.01"/>
         <input
         type="number"
-        name="quantity"
-        placeholder="Amount"/>
-        <input
-        type="number"
         name="alcohol"
         placeholder="Alcohol Content"
         step="0.1"/>
-        <input
-        type="number"
-        name="fullStock"
-        placeholder="Max amount"
-        max="200"
-        min="1"/>
         <input
         type="text"
         name="country"
