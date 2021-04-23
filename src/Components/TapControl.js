@@ -1,11 +1,21 @@
 import React from 'react';
+import NewBeerForm from './NewBeerForm';
+import BeerList from './BeerList';
+import MasterMenu from './BeerList';
 
 class TapControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      formVisible: false
+      formVisible: false,
+      MasterMenu: MasterMenu
     };
+  }
+
+  handleClick = () => {
+    this.setState(prevState => ({
+      formVisible: !prevState.formVisible
+    }));
   }
 
 
@@ -20,7 +30,12 @@ class TapControl extends React.Component {
       buttonText = "Add Beer";
     }
     return(
+      <>
         {currentVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </>
     );
   }
 }
+
+export default TapControl;
