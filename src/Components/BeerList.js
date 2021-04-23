@@ -20,7 +20,8 @@ function BeerList(props) {
         key={beer.id}
         id={beer.id}
         selectedBeer={props.selectedBeer}
-        restockButton={props.restockButton}
+        restockButtonClick={props.restockButton}
+        buyButtonClick={props.buyButton}
         />
         )}
     </>
@@ -32,7 +33,8 @@ export default BeerList;
 BeerList.propTypes = {
   beerList: PropTypes.array,
   selectedBeer: PropTypes.func,
-  restockButton: PropTypes.func
+  restockButton: PropTypes.func,
+  buyButton: PropTypes.func
 }
 export const MasterMenu = [
   {

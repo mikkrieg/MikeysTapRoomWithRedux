@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 
 
 function Beer(props) {
+  let quantity = props.quantity > 0 ? props.quantity : "Empty";
   return(
-    <React.Fragment>
-      <div onClick={() => props.selectedBeer(props.id)}>
-        <h3>{props.name} - QTY: {props.quantity > 0 ? props.quantity : "Empty"} {props.quantity > 0 ? "pints" : "" }</h3>
+    <>
+      <div className="selected-beer" onClick={() => props.selectedBeer(props.id)}>
+        <h3>{props.name} - QTY: {quantity} {quantity > 0 ? "pints" : "" }</h3>
         <h4>Price: ${props.price} per pint</h4>
-        <hr/>
       </div>
-      <button>Buy pint</button>
-      <button onClick={() => props.restockButton(props.id)}>Change keg</button>
       <hr/>
-    </React.Fragment>
+      <button onClick={() => props.buyButtonClick(props.id)}>Buy pint</button>
+      <button onClick={() => props.restockButtonClick(props.id)}>Change keg</button>
+      <hr/>
+    </>
   );
 }
 
@@ -26,7 +27,8 @@ Beer.propTypes = {
   fullStock: PropTypes.number,
   country: PropTypes.string,
   id: PropTypes.string,
-  restockButton: PropTypes.func
+  restockButtonClick: PropTypes.func,
+  buyButtonClick: PropTypes.func
 }
 
 export default Beer;

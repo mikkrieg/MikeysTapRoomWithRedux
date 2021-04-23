@@ -29,6 +29,7 @@ class TapControl extends React.Component {
 
   handleBuyButton = (id) => {
     const selectedBeer = this.state.masterMenu.filter(beer => beer.id === id)[0];
+    console.log(selectedBeer.quantity)
     if(selectedBeer.quantity >= 1) {
       selectedBeer.quantity--;
     }
@@ -41,7 +42,6 @@ class TapControl extends React.Component {
 
   handleAddingNewBeerToMenu = (newBeer) => {
     const newMasterMenu = this.state.masterMenu.concat(newBeer);
-    console.log(newMasterMenu)
     this.setState({
       masterMenu: newMasterMenu,
       formVisible: false
@@ -69,8 +69,9 @@ class TapControl extends React.Component {
       currentVisibleState = <BeerList 
         beerList={this.state.masterMenu}
         selectedBeer={this.handleChangingSelectedBeer}
-        restockButton={this.handleRestockButton}/>;
-      buttonText = "Add keg";
+        restockButton={this.handleRestockButton}
+        buyButton={this.handleBuyButton}/>;
+        buttonText = "Add keg";
     }
     return(
       <>

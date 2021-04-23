@@ -2,8 +2,7 @@ import React from 'react';
 
 function BeerDetail(props) {
   const {beer} = props;
-  console.log(beer.quantity)
-  let quantity = (beer.quantity >= 0 ? beer.quantity : "Empty: Back in stock soon");
+  let quantity = (beer.quantity > 0 ? beer.quantity : "Back in stock soon");
   return(
     <>
       <h1>{beer.name} Details</h1>
