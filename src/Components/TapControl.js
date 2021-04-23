@@ -1,7 +1,7 @@
 import React from 'react';
 import NewBeerForm from './NewBeerForm';
 import BeerList from './BeerList';
-import MasterMenu from './BeerList';
+import {MasterMenu} from './BeerList';
 
 class TapControl extends React.Component {
   constructor(props) {
@@ -22,10 +22,11 @@ class TapControl extends React.Component {
   render() {
     let currentVisibleState = null;
     let buttonText = null;
-    if(this.state.formVisible != null) {
+    if(this.state.formVisible) {
       currentVisibleState = <NewBeerForm />;
       buttonText = "Return to list";
     } else {
+      console.log(typeof(MasterMenu))
       currentVisibleState = <BeerList beerList={this.state.MasterMenu}/>;
       buttonText = "Add Beer";
     }

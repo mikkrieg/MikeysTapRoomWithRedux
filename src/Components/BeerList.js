@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 function BeerList(props) {
-  
+  console.log(props)
   return(
     <>
       <hr/>
