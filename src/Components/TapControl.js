@@ -9,7 +9,7 @@ class TapControl extends React.Component {
     super(props)
     this.state = {
       formVisible: false,
-      MasterMenu: MasterMenu,
+      masterMenu: MasterMenu,
       selectedBeer: null
     };
   }
@@ -27,16 +27,29 @@ class TapControl extends React.Component {
     } 
   }
 
+  handleBuyButton = (id) => {
+    const selectedBeer = this.state.masterMenu.filter(beer => beer.id === id)[0];
+    if(selectedBeer.quantity >= 1) {
+      selectedBeer.quantity--;
+    }
+  }
+
+  handleRestockButton = (id) => {
+    const beer = this.state.masterMenu.filter(beer => beer.id === id)[0];
+    beer.quantity = beer.fullKeg;
+  }
+
   handleAddingNewBeerToMenu = (newBeer) => {
-    const newMasterMenu = this.state.MasterMenu.concat(newBeer);
+    const newMasterMenu = this.state.masterMenu.concat(newBeer);
+    console.log(newMasterMenu)
     this.setState({
-      MasterMenu: newMasterMenu,
+      masterMenu: newMasterMenu,
       formVisible: false
     });
   }
 
   handleChangingSelectedBeer = (id) => {
-    const selectedBeer = this.state.MasterMenu.filter(beer => beer.id === id)[0];
+    const selectedBeer = this.state.masterMenu.filter(beer => beer.id === id)[0];
     this.setState({
       selectedBeer: selectedBeer
     });
@@ -54,9 +67,10 @@ class TapControl extends React.Component {
       buttonText = "Return to list";
     } else {
       currentVisibleState = <BeerList 
-        beerList={this.state.MasterMenu}
-        selectedBeer={this.handleChangingSelectedBeer}/>;
-      buttonText = "Add Beer";
+        beerList={this.state.masterMenu}
+        selectedBeer={this.handleChangingSelectedBeer}
+        restockButton={this.handleRestockButton}/>;
+      buttonText = "Add keg";
     }
     return(
       <>

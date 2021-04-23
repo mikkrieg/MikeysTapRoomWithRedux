@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 
 function BeerList(props) {
-  console.log(props)
   return(
     <>
       <hr/>
@@ -16,11 +15,12 @@ function BeerList(props) {
         price={beer.price}
         alcoholContent={beer.alcohol}
         quantity={beer.quantity}
-        fullStock={beer.fullStock}
+        fullKeg={beer.fullKeg}
         country={beer.country} 
         key={beer.id}
         id={beer.id}
         selectedBeer={props.selectedBeer}
+        restockButton={props.restockButton}
         />
         )}
     </>
@@ -31,7 +31,8 @@ export default BeerList;
 
 BeerList.propTypes = {
   beerList: PropTypes.array,
-  selectedBeer: PropTypes.func
+  selectedBeer: PropTypes.func,
+  restockButton: PropTypes.func
 }
 export const MasterMenu = [
   {
@@ -40,7 +41,7 @@ export const MasterMenu = [
     price: 4.00,
     alcohol: 4.5,
     quantity: 20,
-    fullStock: 100,
+    fullKeg: 124,
     country: "America",
     id: v4()
   },
@@ -49,8 +50,8 @@ export const MasterMenu = [
     brand: "Budweiser",
     price: 3.00,
     alcohol: 5,
-    quantity: 25,
-    fullStock: 100,
+    quantity: 30,
+    fullKeg: 124,
     country: "America",
     id: v4()      
   },
@@ -59,8 +60,8 @@ export const MasterMenu = [
     brand: "Boneyard",
     price: 5.00,
     alcohol: 6.5,
-    quantity: 15,
-    fullStock: 200,
+    quantity: 40,
+    fullKeg: 124,
     country: "America",
     id: v4()    
   },
@@ -69,8 +70,8 @@ export const MasterMenu = [
     brand: "Deschutes",
     price: 5.00,
     alcohol: 6.5,
-    quantity: 5,
-    fullStock: 50,
+    quantity: 50,
+    fullKeg: 124,
     country: "America",
     id: v4()    
   }
