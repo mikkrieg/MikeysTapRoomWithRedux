@@ -1,8 +1,14 @@
-import Header from './Header'
+import Header from './Header';
+import Footer from './Footer';
+import TapControl from './TapControl';
 
 function App() {
   return (
-    <Header />
+    <>
+      <Header />
+      <TapControl/>
+      <Footer />
+    </>
   );
 }
 
