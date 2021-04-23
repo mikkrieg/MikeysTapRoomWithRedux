@@ -24,7 +24,7 @@ class TapControl extends React.Component {
     let buttonText = null;
     if(this.state.formVisible != null) {
       currentVisibleState = <NewBeerForm />;
-      buttonText = "Return";
+      buttonText = "Return to list";
     } else {
       currentVisibleState = <BeerList beerList={this.state.MasterMenu}/>;
       buttonText = "Add Beer";
