@@ -30,7 +30,6 @@ class TapControl extends React.Component {
 
   handleBuyButton = (id) => {
     const selectedBeer = this.state.masterMenu.filter(beer => beer.id === id)[0];
-    console.log(selectedBeer.quantity)
     if(selectedBeer.quantity >= 1) {
       selectedBeer.quantity--;
     }
