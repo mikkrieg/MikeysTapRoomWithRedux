@@ -26,10 +26,19 @@ export const selectBeer = (id) => {
   }
 };
 
-export const changeQuantity = (beer) => {
+export const buyPint = (beer) => {
   const { id, quantity } = beer;
   return {
-    type: c.CHANGE_QUANTITY,
+    type: c.BUY_PINT,
+    quantity: quantity,
+    id: id
+  }
+};
+
+export const changeKeg = (beer) => {
+  const { id, quantity } = beer;
+  return {
+    type: c.CHANGE_KEG,
     quantity: quantity,
     id: id
   }

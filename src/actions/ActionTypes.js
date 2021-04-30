@@ -4,4 +4,6 @@ export const ADD_KEG = 'ADD_KEG';
 
 export const SELECT_BEER = 'SELECT_BEER';
 
-export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+export const BUY_PINT = 'BUY_PINT';
+
+export const CHANGE_KEG = 'CHANGE_KEG';

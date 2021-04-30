@@ -2,6 +2,16 @@ import * as actions from './../../actions/index';
 import * as c from './../../actions/ActionTypes';
 
 describe('Tap house actions', () => {
+  const beer = {
+  name: 'Coors Light',
+  brand: 'Coors',
+  price: 5,
+  alcohol: 4,
+  country: 'USA',
+  quantity: 20,
+  fullKeg: 124,
+  id: 1}
+
   it('toggleForm should create TOGGLE_FORM action', () => {
     expect(actions.toggleForm()).toEqual({
       type: c.TOGGLE_FORM
@@ -30,18 +40,17 @@ describe('Tap house actions', () => {
     });
   });
 
-  it('changeQuantity should create CHANGE_QUANTITY action', () => {
-    const beer = {  
-      name: 'Coors Light',
-      brand: 'Coors',
-      price: 5,
-      alcohol: 4,
-      country: 'USA',
-      quantity: 20,
-      fullKeg: 124,
-      id: 1}
-    expect(actions.changeQuantity(beer)).toEqual({
-      type: c.CHANGE_QUANTITY,
+  it('buyPint should create BUY_PINT action', () => {
+    expect(actions.buyPint(beer)).toEqual({
+      type: c.BUY_PINT,
+      id: 1,
+      quantity: 20
+    });
+  })
+
+  it('changeKeg should create CHANGE_KEG action', () => {
+    expect(actions.changeKeg(beer)).toEqual({
+      type: c.CHANGE_KEG,
       id: 1,
       quantity: 20
     });
