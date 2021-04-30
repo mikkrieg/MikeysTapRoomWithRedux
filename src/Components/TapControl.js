@@ -28,9 +28,12 @@ class TapControl extends React.Component {
 
   handleBuyButton = (id) => {
     const selectedBeer = this.props.masterMenu[id];
-    if(selectedBeer.quantity >= 1) {
-      selectedBeer.quantity--;
-    }
+    const { dispatch } = this.props;
+    // if(selectedBeer.quantity >= 1) {
+    //   selectedBeer.quantity--;
+    // }
+    const action = a.buyPint(selectedBeer)
+    dispatch(action);
     this.setState({
       quantity: selectedBeer.quantity
     })

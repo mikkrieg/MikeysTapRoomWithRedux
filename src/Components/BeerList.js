@@ -15,7 +15,6 @@ function BeerList(props) {
         price={beer.price}
         alcoholContent={beer.alcohol}
         quantity={beer.quantity}
-        fullKeg={beer.fullKeg}
         country={beer.country} 
         key={beer.id}
         id={beer.id}
