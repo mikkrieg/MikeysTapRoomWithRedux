@@ -8,7 +8,7 @@ function BeerList(props) {
   return(
     <>
       <hr/>
-      {props.beerList.map((beer) => 
+      {Object.values(props.beerList).map((beer) => 
         <Beer 
         name={beer.name}
         brand={beer.brand}
@@ -36,45 +36,3 @@ BeerList.propTypes = {
   restockButton: PropTypes.func,
   buyButton: PropTypes.func
 }
-export const MasterMenu = [
-  {
-    name: "CoorsLight",
-    brand: "Coors",
-    price: 4.00,
-    alcohol: 4.5,
-    quantity: 20,
-    fullKeg: 124,
-    country: "America",
-    id: v4()
-  },
-  {
-    name: "BudLight",
-    brand: "Budweiser",
-    price: 3.00,
-    alcohol: 5,
-    quantity: 30,
-    fullKeg: 124,
-    country: "America",
-    id: v4()      
-  },
-  {
-    name: "RPM IPA",
-    brand: "Boneyard",
-    price: 5.00,
-    alcohol: 6.5,
-    quantity: 40,
-    fullKeg: 124,
-    country: "America",
-    id: v4()    
-  },
-  {
-    name: "Fresh Squeezed IPA",
-    brand: "Deschutes",
-    price: 5.00,
-    alcohol: 6.5,
-    quantity: 50,
-    fullKeg: 124,
-    country: "America",
-    id: v4()    
-  }
-] 
