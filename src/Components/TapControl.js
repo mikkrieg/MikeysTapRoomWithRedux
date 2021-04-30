@@ -3,12 +3,14 @@ import NewBeerForm from './NewBeerForm';
 import BeerList from './BeerList';
 import {MasterMenu} from './BeerList';
 import BeerDetail from './BeerDetail';
+import * as a from './../actions/index';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 class TapControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      formVisible: false,
       masterMenu: MasterMenu,
       selectedBeer: null,
       quantity: null
@@ -18,13 +20,12 @@ class TapControl extends React.Component {
   handleClick = () => {
     if(this.state.selectedBeer != null){
       this.setState({
-        formVisible: false,
         selectedBeer: null
       })
     } else {
-      this.setState(prevState => ({
-        formVisible: !prevState.formVisible
-      }));
+      const { dispatch } = this.props;
+      const action = a.toggleForm();
+      dispatch(action);
     } 
   }
 
@@ -65,7 +66,7 @@ class TapControl extends React.Component {
   render() {
     let currentVisibleState = null;
     let buttonText = null;
-    if(this.state.formVisible) {
+    if(this.props.formVisibleOnPage) {
       currentVisibleState = <NewBeerForm handleBeerCreation={this.handleAddingNewBeerToMenu}/>;
       buttonText = "Return to list";
     } else if(this.state.selectedBeer != null){
@@ -87,5 +88,17 @@ class TapControl extends React.Component {
     );
   }
 }
+
+TapControl.propTypes = {
+  formVisibleOnPage: PropTypes.bool
+}
+
+const mapStateToProps = state => {
+  return {
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+
+TapControl = connect(mapStateToProps)(TapControl);
 
 export default TapControl;
