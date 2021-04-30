@@ -28,5 +28,22 @@ describe('Tap house actions', () => {
       type: c.SELECT_BEER,
       id: 1
     });
+  });
+
+  it('changeQuantity should create CHANGE_QUANTITY action', () => {
+    const beer = {  
+      name: 'Coors Light',
+      brand: 'Coors',
+      price: 5,
+      alcohol: 4,
+      country: 'USA',
+      quantity: 20,
+      fullKeg: 124,
+      id: 1}
+    expect(actions.changeQuantity(beer)).toEqual({
+      type: c.CHANGE_QUANTITY,
+      id: 1,
+      quantity: 20
+    });
   })
 });

@@ -25,3 +25,12 @@ export const selectBeer = (id) => {
     id: id
   }
 };
+
+export const changeQuantity = (beer) => {
+  const { id, quantity } = beer;
+  return {
+    type: c.CHANGE_QUANTITY,
+    quantity: quantity,
+    id: id
+  }
+};
