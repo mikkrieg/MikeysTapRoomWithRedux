@@ -1,7 +1,6 @@
 import React from 'react';
 import NewBeerForm from './NewBeerForm';
 import BeerList from './BeerList';
-import {MasterMenu} from './BeerList';
 import BeerDetail from './BeerDetail';
 import * as a from './../actions/index';
 import PropTypes from "prop-types";
@@ -29,7 +28,7 @@ class TapControl extends React.Component {
   }
 
   handleBuyButton = (id) => {
-    const selectedBeer = this.state.masterMenu.filter(beer => beer.id === id)[0];
+    const selectedBeer = this.props.masterMenu[id];
     if(selectedBeer.quantity >= 1) {
       selectedBeer.quantity--;
     }
@@ -39,7 +38,7 @@ class TapControl extends React.Component {
   }
 
   handleRestockButton = (id) => {
-    const beer = this.state.masterMenu.filter(beer => beer.id === id)[0];
+    const beer = this.props.masterMenu[id];
     beer.quantity = beer.fullKeg;
     this.setState({
       quantity: beer.quantity
@@ -47,15 +46,15 @@ class TapControl extends React.Component {
   }
 
   handleAddingNewBeerToMenu = (newBeer) => {
-    const newMasterMenu = this.state.masterMenu.concat(newBeer);
-    this.setState({
-      masterMenu: newMasterMenu,
-      formVisible: false
-    });
+    const { dispatch } = this.props;
+    const action = a.addKeg(newBeer);
+    dispatch(action);
+    const action2 = a.toggleForm();
+    dispatch(action2);
   }
 
   handleChangingSelectedBeer = (id) => {
-    const selectedBeer = this.state.masterMenu.filter(beer => beer.id === id)[0];
+    const selectedBeer = this.props.masterMenu[id];
     this.setState({
       selectedBeer: selectedBeer
     });
@@ -73,7 +72,7 @@ class TapControl extends React.Component {
       buttonText = "Return to list";
     } else {
       currentVisibleState = <BeerList 
-        beerList={this.state.masterMenu}
+        beerList={this.props.masterMenu}
         selectedBeer={this.handleChangingSelectedBeer}
         restockButton={this.handleRestockButton}
         buyButton={this.handleBuyButton}/>;
@@ -89,13 +88,16 @@ class TapControl extends React.Component {
 }
 
 TapControl.propTypes = {
-  formVisibleOnPage: PropTypes.bool
+  formVisibleOnPage: PropTypes.bool,
+  masterMenu: PropTypes.object
 }
 
 const mapStateToProps = state => {
   return {
-    formVisibleOnPage: state.formVisibleOnPage
-  }
+    formVisibleOnPage: state.formVisibleOnPage,
+    masterMenu: state
+  } 
+  
 }
 
 TapControl = connect(mapStateToProps)(TapControl);

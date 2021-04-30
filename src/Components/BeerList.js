@@ -1,6 +1,5 @@
 import React from 'react';
-import { v4 } from 'uuid'
-import Beer from './Beer'
+import Beer from './Beer';
 import PropTypes from 'prop-types';
 
 
@@ -28,11 +27,13 @@ function BeerList(props) {
   );
 }
 
-export default BeerList;
-
 BeerList.propTypes = {
-  beerList: PropTypes.array,
+  beerList: PropTypes.object,
   selectedBeer: PropTypes.func,
   restockButton: PropTypes.func,
   buyButton: PropTypes.func
 }
+
+export default BeerList;
+
+

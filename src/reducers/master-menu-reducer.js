@@ -1,11 +1,10 @@
 import * as c from '../actions/ActionTypes';
-import { MasterMenu } from './../components/BeerList';
 
-export default (state = {MasterMenu}, action) => {
+export default (state = {}, action) => {
   const { name, brand, price, alcohol, quantity, fullKeg, country, id } = action;
   switch(action.type) {
     case c.ADD_KEG:
-      return Object.assign({MasterMenu}, state, {
+      return Object.assign({}, state, {
         [id]: {
           name: name,
           brand: brand,

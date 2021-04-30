@@ -1,5 +1,4 @@
 import masterMenuReducer from './../../reducers/master-menu-reducer';
-import { MasterMenu } from './../../components/BeerList';
 import * as c from '../../actions/ActionTypes';
 
 describe('masterMenuReducer', () => {
@@ -16,7 +15,7 @@ describe('masterMenuReducer', () => {
   }
   
   test('Should return default state if there is no action type passed in', () => {
-      expect(masterMenuReducer({MasterMenu}, {type: null})).toEqual({MasterMenu});
+      expect(masterMenuReducer({}, {type: null})).toEqual({});
   });
 
   test('Should successfully add keg to master menu', () => {
@@ -33,8 +32,7 @@ describe('masterMenuReducer', () => {
       id: id
     };
 
-    expect(masterMenuReducer({MasterMenu}, action)).toEqual({
-      MasterMenu,
+    expect(masterMenuReducer({}, action)).toEqual({
       [id] : {
         name: name,
         brand: brand,
