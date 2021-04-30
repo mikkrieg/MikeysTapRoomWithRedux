@@ -17,7 +17,7 @@ class TapControl extends React.Component {
   handleClick = () => {
     if(this.props.selectedBeer != null){
       const { dispatch } = this.props;
-      const action = a.selectBeer();
+      const action = a.selectBeer(null);
       dispatch(action);
     } else {
       const { dispatch } = this.props;
