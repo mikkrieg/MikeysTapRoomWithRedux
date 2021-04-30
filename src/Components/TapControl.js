@@ -11,7 +11,6 @@ class TapControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      masterMenu: MasterMenu,
       selectedBeer: null,
       quantity: null
     };

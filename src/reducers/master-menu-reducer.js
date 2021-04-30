@@ -17,5 +17,7 @@ export default (state = {MasterMenu}, action) => {
           id: id
         }
       });
+    default: 
+      return state;
   }
-}
+};
