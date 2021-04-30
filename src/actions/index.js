@@ -18,3 +18,10 @@ export const addKeg = (keg) => {
     id: id
   }
 };
+
+export const selectBeer = (id) => {
+  return {
+    type: c.SELECT_BEER,
+    id: id
+  }
+};
