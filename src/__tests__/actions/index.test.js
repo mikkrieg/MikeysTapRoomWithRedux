@@ -21,4 +21,12 @@ describe('Tap house actions', () => {
       id: 1
     });
   });
+
+  it('selectBeer should create SELECT_BEER action', () => {
+    const id = 1;
+    expect(actions.selectBeer(id)).toEqual({
+      type: c.SELECT_BEER,
+      id: 1
+    });
+  })
 });
