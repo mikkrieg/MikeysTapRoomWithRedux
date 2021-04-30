@@ -1,10 +1,10 @@
 import React from 'react';
-import Beer from './Beer';
+import { v4 } from 'uuid'
+import Beer from './Beer'
 import PropTypes from 'prop-types';
 
 
 function BeerList(props) {
-  console.log(props.beerList);
   return(
     <>
       <hr/>
@@ -29,12 +29,10 @@ function BeerList(props) {
 }
 
 BeerList.propTypes = {
-  beerList: PropTypes.object,
+  beerList: PropTypes.array,
   selectedBeer: PropTypes.func,
   restockButton: PropTypes.func,
   buyButton: PropTypes.func
 }
 
 export default BeerList;
-
-

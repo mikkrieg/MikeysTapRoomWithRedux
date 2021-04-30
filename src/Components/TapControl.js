@@ -10,16 +10,15 @@ class TapControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedBeer: null,
       quantity: null
     };
   }
 
   handleClick = () => {
-    if(this.state.selectedBeer != null){
-      this.setState({
-        selectedBeer: null
-      })
+    if(this.props.selectedBeer != null){
+      const { dispatch } = this.props;
+      const action = a.selectBeer();
+      dispatch(action);
     } else {
       const { dispatch } = this.props;
       const action = a.toggleForm();
@@ -54,10 +53,10 @@ class TapControl extends React.Component {
   }
 
   handleChangingSelectedBeer = (id) => {
+    const { dispatch } = this.props;
     const selectedBeer = this.props.masterMenu[id];
-    this.setState({
-      selectedBeer: selectedBeer
-    });
+    const action = a.selectBeer(selectedBeer);
+    dispatch(action);
   } 
 
 
@@ -67,8 +66,8 @@ class TapControl extends React.Component {
     if(this.props.formVisibleOnPage) {
       currentVisibleState = <NewBeerForm handleBeerCreation={this.handleAddingNewBeerToMenu}/>;
       buttonText = "Return to list";
-    } else if(this.state.selectedBeer != null){
-      currentVisibleState = <BeerDetail beer={this.state.selectedBeer}/>;
+    } else if(this.props.selectedBeer != null){
+      currentVisibleState = <BeerDetail beer={this.props.selectedBeer}/>;
       buttonText = "Return to list";
     } else {
       currentVisibleState = <BeerList 
@@ -89,13 +88,15 @@ class TapControl extends React.Component {
 
 TapControl.propTypes = {
   formVisibleOnPage: PropTypes.bool,
-  masterMenu: PropTypes.object
+  masterMenu: PropTypes.object,
+  selectedBeer: PropTypes.string
 }
 
 const mapStateToProps = state => {
   return {
     formVisibleOnPage: state.formVisibleOnPage,
-    masterMenu: state.masterMenu
+    masterMenu: state.masterMenu,
+    selectedBeer: state.selectedBeer
   } 
   
 }
