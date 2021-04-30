@@ -11,8 +11,6 @@ function BeerDetail(props) {
       <h3>ABV: {beer.alcohol}%</h3>
       <h3>Country of Origin: {beer.country}</h3>
       <h3>Stock: {quantity} {quantity > 0 ? "pints" : ""} </h3>
-      <button>Edit</button>
-      <button>Delete</button>
     </>
   )
 }

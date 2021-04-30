@@ -95,7 +95,7 @@ TapControl.propTypes = {
 const mapStateToProps = state => {
   return {
     formVisibleOnPage: state.formVisibleOnPage,
-    masterMenu: state
+    masterMenu: state.masterMenu
   } 
   
 }
