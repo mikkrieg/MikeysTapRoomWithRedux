@@ -12,7 +12,8 @@ describe("rootReducer", () => {
     expect(rootReducer({}, { type: null })).toEqual({
       masterMenu: {},
       formVisibleOnPage: false,
-      selectedBeer: null
+      selectedBeer: null,
+      quantity: null
     });
   });
 

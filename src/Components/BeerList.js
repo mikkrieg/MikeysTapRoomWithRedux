@@ -21,6 +21,7 @@ function BeerList(props) {
         selectedBeer={props.selectedBeer}
         restockButtonClick={props.restockButton}
         buyButtonClick={props.buyButton}
+        stateQuantity={props.stateQuantity}
         />
         )}
     </>
@@ -28,10 +29,11 @@ function BeerList(props) {
 }
 
 BeerList.propTypes = {
-  beerList: PropTypes.array,
+  beerList: PropTypes.object,
   selectedBeer: PropTypes.func,
   restockButton: PropTypes.func,
-  buyButton: PropTypes.func
+  buyButton: PropTypes.func,
+  stateQuantity: PropTypes.number
 }
 
 export default BeerList;

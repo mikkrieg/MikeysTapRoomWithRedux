@@ -41,17 +41,15 @@ describe('Tap house actions', () => {
   });
 
   it('buyPint should create BUY_PINT action', () => {
-    expect(actions.buyPint(beer)).toEqual({
+    expect(actions.buyPint(beer.quantity)).toEqual({
       type: c.BUY_PINT,
-      id: 1,
       quantity: 20
     });
   })
 
   it('changeKeg should create CHANGE_KEG action', () => {
-    expect(actions.changeKeg(beer)).toEqual({
+    expect(actions.changeKeg(beer.quantity)).toEqual({
       type: c.CHANGE_KEG,
-      id: 1,
       quantity: 20
     });
   })

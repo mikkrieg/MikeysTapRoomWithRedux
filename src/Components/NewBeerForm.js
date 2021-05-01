@@ -16,7 +16,7 @@ function NewBeerForm(props) {
       name: e.target.name.value, 
       brand: e.target.brand.value, 
       price: parseFloat(e.target.price.value), 
-      quantity: 124,
+      quantity: 100,
       alcohol: parseFloat(e.target.alcohol.value),
       country: e.target.country.value,
       id: v4()

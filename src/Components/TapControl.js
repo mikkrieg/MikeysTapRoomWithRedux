@@ -9,9 +9,6 @@ import { connect } from 'react-redux';
 class TapControl extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      quantity: null
-    };
   }
 
   handleClick = () => {
@@ -29,22 +26,17 @@ class TapControl extends React.Component {
   handleBuyButton = (id) => {
     const selectedBeer = this.props.masterMenu[id];
     const { dispatch } = this.props;
-    // if(selectedBeer.quantity >= 1) {
-    //   selectedBeer.quantity--;
-    // }
     const action = a.buyPint(selectedBeer)
-    dispatch(action);
-    this.setState({
-      quantity: selectedBeer.quantity
-    })
+    if(selectedBeer.quantity >= 1) {
+      dispatch(action);
+    }
   }
 
   handleRestockButton = (id) => {
     const beer = this.props.masterMenu[id];
-    beer.quantity = beer.fullKeg;
-    this.setState({
-      quantity: beer.quantity
-    })
+    const { dispatch } = this.props;
+    const action = a.changeKeg(beer.quantity);
+    dispatch(action);
   }
 
   handleAddingNewBeerToMenu = (newBeer) => {
@@ -62,7 +54,6 @@ class TapControl extends React.Component {
     dispatch(action);
   } 
 
-
   render() {
     let currentVisibleState = null;
     let buttonText = null;
@@ -77,7 +68,8 @@ class TapControl extends React.Component {
         beerList={this.props.masterMenu}
         selectedBeer={this.handleChangingSelectedBeer}
         restockButton={this.handleRestockButton}
-        buyButton={this.handleBuyButton}/>;
+        buyButton={this.handleBuyButton}
+        stateQuantity={this.props.quantity}/>;
         buttonText = "Add keg";
     }
     return(
@@ -92,14 +84,17 @@ class TapControl extends React.Component {
 TapControl.propTypes = {
   formVisibleOnPage: PropTypes.bool,
   masterMenu: PropTypes.object,
-  selectedBeer: PropTypes.string
+  selectedBeer: PropTypes.object,
+  quantity: PropTypes.number
 }
 
 const mapStateToProps = state => {
+  console.log(state.quantity);
   return {
     formVisibleOnPage: state.formVisibleOnPage,
     masterMenu: state.masterMenu,
-    selectedBeer: state.selectedBeer
+    selectedBeer: state.selectedBeer,
+    quantity: state.quantity
   } 
   
 }
