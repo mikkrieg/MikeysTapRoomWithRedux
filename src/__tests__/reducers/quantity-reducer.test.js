@@ -7,10 +7,10 @@ describe("quantityReducer", () => {
   });
 
   test('Should reduce quantity by one when a pint is purchased', () => {
-    expect(quantityReducer(0, {type: c.BUY_PINT, quantity: 1})).toEqual({quantity: 0});
+    expect(quantityReducer(null, {type: c.BUY_PINT, quantity: 1 - 1})).toEqual({quantity: 0});
   });
 
   test('Should replenish quantity to 124 pints when a keg is changed', () => {
-    expect(quantityReducer(0, {type: c.CHANGE_KEG, quantity: 1})).toEqual({quantity: 124});
+    expect(quantityReducer(null, {type: c.CHANGE_KEG, quantity: 124})).toEqual({quantity: 124});
   });
 });
