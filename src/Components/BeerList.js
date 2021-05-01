@@ -21,7 +21,6 @@ function BeerList(props) {
         selectedBeer={props.selectedBeer}
         restockButtonClick={props.restockButton}
         buyButtonClick={props.buyButton}
-        stateQuantity={props.stateQuantity}
         />
         )}
     </>
@@ -33,7 +32,6 @@ BeerList.propTypes = {
   selectedBeer: PropTypes.func,
   restockButton: PropTypes.func,
   buyButton: PropTypes.func,
-  stateQuantity: PropTypes.number
 }
 
 export default BeerList;

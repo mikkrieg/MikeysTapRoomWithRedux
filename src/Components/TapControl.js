@@ -26,16 +26,18 @@ class TapControl extends React.Component {
   handleBuyButton = (id) => {
     const selectedBeer = this.props.masterMenu[id];
     const { dispatch } = this.props;
-    const action = a.buyPint(selectedBeer)
-    if(selectedBeer.quantity >= 1) {
-      dispatch(action);
+    if(selectedBeer.quantity > 0){
+      selectedBeer.quantity--
     }
+    const action = a.buyPint(selectedBeer.quantity)
+    dispatch(action)
   }
 
   handleRestockButton = (id) => {
-    const beer = this.props.masterMenu[id];
+    const selectedBeer = this.props.masterMenu[id];
     const { dispatch } = this.props;
-    const action = a.changeKeg(beer.quantity);
+    selectedBeer.quantity = 124;
+    const action = a.changeKeg(selectedBeer.quantity);
     dispatch(action);
   }
 
@@ -68,8 +70,7 @@ class TapControl extends React.Component {
         beerList={this.props.masterMenu}
         selectedBeer={this.handleChangingSelectedBeer}
         restockButton={this.handleRestockButton}
-        buyButton={this.handleBuyButton}
-        stateQuantity={this.props.quantity}/>;
+        buyButton={this.handleBuyButton}/>;
         buttonText = "Add keg";
     }
     return(
@@ -85,11 +86,11 @@ TapControl.propTypes = {
   formVisibleOnPage: PropTypes.bool,
   masterMenu: PropTypes.object,
   selectedBeer: PropTypes.object,
-  quantity: PropTypes.number
+  quantity: PropTypes.object
 }
 
 const mapStateToProps = state => {
-  console.log(state.quantity);
+  
   return {
     formVisibleOnPage: state.formVisibleOnPage,
     masterMenu: state.masterMenu,
