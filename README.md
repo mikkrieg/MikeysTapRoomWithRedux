@@ -12,6 +12,7 @@
 * _React Library_
 * _JavaScript_
 * _NPM_
+* _Visual Studio_
 
 ## React Schema Diagram
 ![ReactSchema](./src/img/TapRoomDiagram.png)
