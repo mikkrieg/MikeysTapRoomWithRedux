@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 function BeerDetail(props) {
   const {beer} = props;
@@ -13,6 +14,10 @@ function BeerDetail(props) {
       <h3>Stock: {quantity} {quantity > 0 ? "pints" : ""} </h3>
     </>
   )
+}
+
+BeerDetail.propTypes = {
+  beer: PropTypes.object
 }
 
 
